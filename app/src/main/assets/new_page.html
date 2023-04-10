@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>My Dashboard</title>
+    <style>
+            body {
+                font-family: "Poppins", sans-serif;
+                background-color: #355691;
+                margin: 0;
+            }
+            h1 {
+                color: #ffffff;
+                text-align: center;
+                margin-top: 30px;
+                margin-bottom: 30px;
+            }
+
+            .container {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                margin: 50px;
+            }
+
+            .card {
+                background-color: #000000;
+                box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+                border-radius: 5px;
+                margin: 30px;
+                max-width: 500px;
+                width: 100%;
+                overflow: hidden;
+            }
+
+            .card h2 {
+                color: #5f5aa2;
+                text-align: center;
+                margin-top: 20px;
+            }
+
+            .graph-container {
+                background-color: #ffffff;
+                box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+                border-radius: 5px;
+                margin: 30px;
+                max-width: 500px;
+                width: 100%;
+                overflow: hidden;
+            }
+
+            .graph-header {
+                background-color: #6d9dc5;
+                color: #ffffff;
+                padding: 10px;
+                text-align: center;
+            }
+
+            .graph {
+                height: 300px;
+            }
+
+            .back-button {
+                position: fixed;
+                bottom: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: #1a535c;
+                color: #ffffff;
+                width: 70px;
+                height: 30px;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+            @media only screen and (max-width: 768px) {
+    .card {
+        max-width: 100%;
+    }
+    .container {
+        margin: 20px;
+    }
+    .graph {
+        width: 100%;
+    }
+}
+        </style>
+</head>
+<body>
+<div class="back-button" style="bottom: 20px; left: 50%; transform: translateX(-50%);">
+    <a href="main.html" style="color: #ffffff;">Go Back</a>
+</div>
+<h1>Sensor Data</h1>
+<div class="container">
+    <div class="card">
+        <h2 style="color: #ffffff;">Turbidity</h2>
+        <iframe width="300" height="300" style="border: 1px solid #413f54;" src="https://thingspeak.com/channels/1628317/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line"></iframe>
+    </div>
+    <div class="card">
+        <h2 style="color: #ffffff;">Temperature</h2>
+        <iframe width="300" height="300" style="border: 1px solid #413f54;" src="https://thingspeak.com/channels/1628317/charts/2?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line"></iframe>
+    </div>
+    <div class="card">
+        <h2 style="color: #ffffff;">pH</h2>
+        <iframe width="300" height="300" style="border: 1px solid #413f54;" src="https://thingspeak.com/channels/1628317/charts/3?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line"></iframe>
+    </div>
+</div>
+</body>
+</html>

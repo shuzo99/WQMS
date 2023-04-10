@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Auto Feeder Details</title>
+    <style>
+            /* Global styles */
+            body {
+                font-family: Poppins;
+                margin: 0;
+                padding: 0;
+                background-color: #2e3047;
+            }
+
+            .container {
+                max-width: 800px;
+                margin: 0 auto;
+                padding: 20px;
+            }
+
+            h1,
+            h2 {
+                text-align: center;
+                color: #ffffff;
+            }
+
+            p {
+                text-align: justify;
+                color: #ffffff;
+            }
+
+            .card {
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                margin-bottom: 20px;
+                background-color: #3c3f58;
+            }
+
+            .card-header,
+            .card-header-2 {
+                background-color: #3bba9c;
+                padding: 10px;
+                border-bottom: 1px solid #ccc;
+                text-align: center;
+                color: white;
+            }
+
+            .card-body,
+            .card-body-2 {
+                padding: 20px;
+                text-align: center;
+                color: #707793;
+            }
+
+            button {
+                padding: 10px;
+                background-color: #8a9ea7;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 16px;
+            }
+
+            button:hover {
+                background-color: #43455c;
+            }
+
+            .go-back {
+                text-align: center;
+                margin-top: 20px;
+            }
+
+            /* Styles for auto feeder card */
+            .card-2 {
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                margin-bottom: 20px;
+                background-color: #3c3f58;
+            }
+            .clock-form button {
+                margin-top: 20px;
+            }
+
+            .clock-form label {
+                margin-right: 10px;
+                color: #ffffff;
+            }
+
+            #message {
+                margin-top: 20px;
+                text-align: center;
+                color: #707793;
+            }
+        </style>
+</head>
+<body>
+<h1>Auto Feeder Details</h1>
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h2>What is an auto feeder?</h2>
+        </div>
+        <div class="card-body">
+            <p>
+                India has a thriving aquaculture industry, and fish farming is an important source of livelihood for many people in the country. The Indian government has launched several initiatives to promote and support fish
+                farming, particularly for small and marginal farmers.
+            </p>
+            <p>
+                One such initiative is the National Fisheries Development Board (NFDB), which was established in 2006 to provide financial and technical assistance for the development of the fisheries sector in the country. The NFDB
+                provides support for various activities related to fish farming, such as the construction of ponds, hatcheries, and feed mills.
+            </p>
+            <p>
+                In addition, the government has also launched the Blue Revolution Scheme, which aims to increase fish production and productivity by promoting the development of fish farms, hatcheries, and feed mills. The scheme
+                also provides support for the development of infrastructure, such as cold storage facilities and transportation systems, to help farmers get their produce to market.
+            </p>
+            <p>
+                Fish farming is also an important source of export revenue for India. The country is a major exporter of shrimp, prawns, and other fish products, and the sector is expected to continue to grow in the coming years.
+            </p>
+            <p>
+                Overall, the fish farming industry in India has a lot of potential for growth, and initiatives by the government are helping to support the development of the sector. With the right support and infrastructure, fish
+                farming can continue to be an important source of livelihood and income for many people in India.
+            </p>
+        </div>
+    </div>
+    <div class="card-2">
+        <div class="card-header-2">
+            <h2>How to use the auto feeder?</h2>
+        </div>
+        <div class="card-body-2">
+            <form class="clock-form">
+                <label for="feed-time">Set feeding time:</label>
+                <input type="time" id="feed-time" name="feed-time" required />
+                <button type="submit" id="feed-button">FEED</button>
+            </form>
+            <p id="message"></p>
+        </div>
+    </div>
+</div>
+<div class="go-back">
+    <button onclick="goBack()">Go Back</button>
+</div>
+<script>
+            function goBack() {
+                window.history.back();
+            }
+            // code for calling API and displaying message goes here
+        </script>
+</body>
+</html>

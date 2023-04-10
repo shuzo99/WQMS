@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HYDRAMATSYAPALAN</title>
+    <style>
+            body {
+                    font-family: "Poppins", sans-serif; /* Change font to Poppins */
+                    background-color: #0A2A5A;
+                    margin: 0;
+                }
+            h1 {
+                text-align: center;
+                margin-top: 20px;
+                margin-bottom: 30px;
+                color: #CCCCCC;
+            }
+
+            .container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-wrap: wrap;
+                margin: 0 auto;
+                max-width: 100%;
+            }
+
+            .card {
+                background-color: #A8DCD9;
+                border-radius: 10px;
+                box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+                padding: 20px;
+                margin-bottom: 30px;
+                width: 90%;
+                text-align: center;
+                margin: 10px;
+            }
+
+            .card h2 {
+                margin-top: 0;
+                font-size: 24px;
+                font-weight: 600;
+                color: #333333;
+            }
+
+            .card p {
+                font-size: 18px;
+                font-weight: 500;
+                color: #666666;
+            }
+
+            .alert {
+                background-color: #FDF7FA;
+                color: #600000;
+                padding: 10px;
+                margin-bottom: 10px;
+                border-radius: 5px;
+                text-align: center;
+            }
+
+            .chart {
+                height: 200px;
+                margin-bottom: 10px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .chart canvas {
+                max-width: 100%;
+                height: auto;
+                border-radius: 10px;
+                box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+            }
+
+            .button-container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin: 0 auto;
+                max-width: 100%;
+                margin-top: 30px;
+            }
+
+            .button {
+                background-color: #333333;
+                color: #ffffff;
+                padding: 15px 25px;
+                border-radius: 5px;
+                text-align: center;
+                text-decoration: none;
+                font-size: 18px;
+                font-weight: 500;
+                margin: 0 10px;
+            }
+
+            @media only screen and (min-width: 768px) {
+                .container {
+                    max-width: 768px;
+                }
+
+                .card {
+                    width: 47%;
+                    margin: 1%;
+                }
+            }
+
+            .button-detailed-view {
+                background-color: seagreen;
+                border: none;
+                color: white;
+                padding: 15px 32px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                margin: 4px 2px;
+                cursor: pointer;
+                border-radius: 10px;
+                box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+                transition: background-color 0.3s ease;
+            }
+
+            .button-detailed-view:hover {
+                background-color: #81D4FA;
+            }
+
+            .button-detailed-view {
+                display: block;
+                margin: 0 auto;
+        </style>
+</head>
+<body>
+<h1>HYDRAMATSYAPALAN</h1>
+<div class="container">
+    <div class="card">
+        <h2>Temperature</h2>
+        <p><span id="sensor1-value">Loading...</span></p>
+        <div class="alert" id="sensor1-alert" style="display: none;">ALERT: Temperature Alert !!!</div>
+    </div>
+    <div class="card">
+        <h2>Turbidity</h2>
+        <p><span id="sensor2-value">Loading...</span></p>
+        <div class="alert" id="sensor2-alert" style="display: none;">ALERT: Turbidity Alert !!!</div>
+    </div>
+    <div class="card">
+        <h2>pH</h2>
+        <p><span id="sensor3-value">Loading...</span></p>
+        <div class="alert" id="sensor3-alert" style="display: none;">ALERT: pH Alert !!!</div>
+    </div>
+</div>
+<div class="button-container">
+    <button onclick="window.open('new_page.html', '_blank')" class="button-detailed-view">Detailed View</button>
+    <button onclick="window.location.href='auto_feeder.html'" class="button-detailed-view">Auto Feeder</button>
+    <button onclick="window.location.href='fish_info.html'" class="button-detailed-view">Fish Details</button>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+            setInterval(updateSensorValues, 15000);
+
+            function updateSensorValues() {
+                $.getJSON("https://api.thingspeak.com/channels/1628317/feeds.json?api_key=0QHVNBELV3BT64BQ&results=1", function (data) {
+                    // Sensor 1
+                    var sensor1Value = parseFloat(data.feeds[0].field1);
+                    $("#sensor1-value").text(sensor1Value.toFixed(2));
+
+                    if (sensor1Value > 50) {
+                        $("#sensor1-alert").fadeIn();
+                    } else {
+                        $("#sensor1-alert").fadeOut();
+                    }
+
+                    // Sensor 2
+                    var sensor2Value = parseFloat(data.feeds[0].field2);
+                    $("#sensor2-value").text(sensor2Value.toFixed(2));
+
+                    if (sensor2Value > 50) {
+                        $("#sensor2-alert").fadeIn();
+                    } else {
+                        $("#sensor2-alert").fadeOut();
+                    }
+
+                    // Sensor 3
+                    var sensor3Value = parseFloat(data.feeds[0].field3);
+                    $("#sensor3-value").text(sensor3Value.toFixed(2));
+
+                    if (sensor3Value > 50) {
+                        $("#sensor3-alert").fadeIn();
+                    } else {
+                        $("#sensor3-alert").fadeOut();
+                    }
+                }).fail(function () {
+                    console.log("Error: Unable to retrieve data from ThingSpeak.");
+                });
+            }
+        </script>
+</body>
+</html>
